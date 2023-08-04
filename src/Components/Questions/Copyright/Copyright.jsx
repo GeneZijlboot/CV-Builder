@@ -4,7 +4,7 @@ function Copyright(){
     return (
         <>
             <div className='App'>
-                <div className='text'>
+                <div className='text1'>
                     <p>CV-Builder</p>
                     <button>Save</button>
                 </div>

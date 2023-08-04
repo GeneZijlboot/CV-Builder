@@ -4,11 +4,11 @@
     border-radius: 25px;
 }
 
-.text{
+.text1{
     display: flex;
     justify-content: space-around;
     color:snow;
-    font-size: 37px;
+    font-size: 38px;
 }
 
 button{
@@ -23,7 +23,7 @@ button{
 }
 
 #MadeBy, a{
-    padding-left: 23px;
+    padding-left: 18px;
     padding-bottom: 35px;
     font-size: 25px;
     color: white;

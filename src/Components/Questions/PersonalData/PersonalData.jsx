@@ -4,7 +4,7 @@ function PersonalData(){
     return (
         <>
             <div className='App'>
-                <p className='text'>Personal Data</p>
+                <p className='text2'>Personal Data</p>
                 <div className="Initials">
                     <input placeholder="FirstName"/>
                     <input placeholder="LastName"/>
