@@ -1,0 +1,32 @@
+.App{
+    margin: 30px;
+    background-color: #e56544;
+    border-radius: 25px;
+}
+
+.text{
+    display: flex;
+    justify-content: space-around;
+    color:snow;
+    font-size: 37px;
+}
+
+button{
+    background-color: snow;
+    border: snow 1px solid;
+    border-radius: 25px;
+    font-size: 20px;
+    width: 100px;
+    height: 50px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+#MadeBy, a{
+    padding-left: 23px;
+    padding-bottom: 35px;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}

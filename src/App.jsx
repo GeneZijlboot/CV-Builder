@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import './App.css' //importing Styling
-import ListGroup from './components/ListGroup';
+import Copyright from './components/Questions/Copyright/Copyright.jsx';
 
 function App() {
   return (
     <>
-      <div><ListGroup /></div>
+      <div className='LeftSide'>
+        <Copyright />
+
+      </div>
     </>
   )
 }
