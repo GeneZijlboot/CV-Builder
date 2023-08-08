@@ -1,18 +1,14 @@
- //importing Styling
-import './App.css'
+//importing Components
+import Everything from "./Components/Everything/Everything";
 
- //importing Components
-import Copyright from './components/Questions/Copyright/Copyright.jsx';
-import PersonalData from './components/Questions/PersonalData/PersonalData.jsx';
-import WorkExp from './components/Questions/WorkExp/WorkExp.jsx';
+//importing stylesheet
+import './App.css'
 
 function App() {
   return (
     <>
-      <div className='LeftSide'>
-        <Copyright />
-        <PersonalData />
-        <WorkExp />
+      <div className='App'>
+        <Everything />
       </div>
     </>
   )
