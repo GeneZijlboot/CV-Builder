@@ -1,26 +1,69 @@
-p{
+*{
     margin: 0px;
 }
 
 .App{
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    margin: 20px;
-    column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin: 20px 65px 50px 65px;
 }
 
-/* Questions Component */
-.QuestionsComponent{
-    background-color: rgb(38, 141, 79);
-}
-
-/* Questions --> Copyright Component */
-.Copyright{
+.Results{
     border: 5px solid black;
     padding: 20px;
     margin: 20px;
     border-radius: 20px;
 }
+
+.Text{
+    font-size: 30px;
+}
+
+input{
+    max-width: 240px;
+    border-radius: 20px;
+    border: 1px solid snow;
+    padding-left: 10px;
+}
+
+/* Rsults Section */
+.SectionOne{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.Name{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 6px;
+    gap: 15px;
+    font-size: 40px;
+}
+
+.InfoStyles{
+    display: flex;
+    gap: 5px;
+    font-size: 20px;
+}
+
+.Devider{
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* Questions --> Copyright Component */
+.Copyright{
+    border: 5px solid black;
+    background-color: rgb(23, 141, 78);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}  
 
 .CopyrightContainer{
     display: grid;
@@ -34,15 +77,28 @@ p{
     font-size: 40px;
 }
 
-.Save{
+.Save, .WorkExpBtn, .SkillsBtn, .EducationBtn{
     background-color: snow;
-    border: 1px solid snow;
+    border: 5px solid snow;
+    color:black;
     border-radius: 25px;
     width: 100px;
     height: 50px;
     font-size: 15px;
     cursor: pointer;
 }
+
+.Save:hover, .WorkExpBtn:hover, .SkillsBtn:hover, .EducationBtn:hover{
+    background-color: black;
+    border: 5px solid black;
+    color:snow;
+    border-radius: 25px;
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
 
 .CopyrigCopyrightMadeBy, a{
     margin-top: 20px;
@@ -57,6 +113,7 @@ p{
 /* Questions --> UserInfo Component */
 .UserInfo{
     border: 5px solid black;
+    background-color: rgb(23, 141, 78);
     margin: 20px;/**/
     padding: 20px;
     border-radius: 20px;
@@ -76,6 +133,7 @@ p{
 
 .UserInfoRowtext{
     font-size: 30px;
+    padding: 5px;
     color: snow;
 }
 
@@ -85,89 +143,18 @@ input{
 }
 
 /* Questions --> WorkExp Component */
-.WorkExp{
+
+.WorkExp, .Skills, .Education{
+    display: flex;
     border: 5px solid black;
+    background-color: rgb(23, 141, 78);
     margin: 20px;/**/
     padding: 20px;
     border-radius: 20px;
+    justify-content: space-between;
 }
-
-.WorkExpRowtext, .EducationRowtext, .SkillsRowtext{
-    font-size: 20px;
+.WorkExptxt, .Skillstxt, .Educationtxt{
+    font-size: 30px;
+    padding: 5px;
     color: snow;
-}
-
-.WorkExpVisible, .EducationVisible, .SkillsVisible{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-}
-
-.WorkExperienceText, .EducationText, .SkillsText{
-    color: snow;
-    font-size: 35px;
-}
-
-.AddWorkExp, .AddSkills, .AddEducation{
-    background-color: snow;
-    border: 1px solid snow;
-    border-radius: 25px;
-    width: 120px;
-    height: 50px;
-    font-size: 15px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.WorkExpQuestionForm, .EducationQuestionForm{
-    border: 5px solid black;
-    padding: 20px;
-    border-radius: 20px;
-}
-
-.WorkExpNames, .EducationNames{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 30px;  
-}
-
-.WorkExpDates{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 30px;
-}
-
-.WorkExpDescription{
-    max-width: 100%;
-    max-height: 100px;
-    min-width: 450px;
-    min-height: 100%;
-    text-decoration: none;
-}
-
-/* Questions --> Skills Component */
-.Skills{
-    border: 5px dashed black;
-    border: 5px solid black;
-    margin: 20px;/**/
-    padding: 20px;
-    border-radius: 20px;
-
-}
-
-/* Questions --> Education Component */
-.Education{
-    border: 5px solid black;
-    margin: 20px;/**/
-    padding: 20px;
-    border-radius: 20px;
-
-}
-
-/* ResumeResults Component */
-.ResumeResultsComponent{
-    border: 5px solid black;
-    margin: 20px;/**/
-    padding: 20px;
-    border-radius: 20px;
-
 }
