@@ -9,6 +9,7 @@ function App() {
   const [adress, setAdress] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmitFname = (value) => {
     setFname(value);
@@ -26,6 +27,10 @@ function App() {
     setEmail(value);
   };
 
+  const handleSubmitDescription = (value) => {
+    setDescription(value);
+  };
+
   return (
     <div className="App">
       <Questions 
@@ -33,6 +38,7 @@ function App() {
         AdressChange={handleSubmitAdress}
         PhoneChange={handleSubmitPhone}
         EmailChange={handleSubmitEmail}
+        DescriptionChange={handleSubmitDescription}
       />
 
       <Results
@@ -40,6 +46,7 @@ function App() {
         adress={adress} 
         phone={phone}
         email={email}
+        description={description}
       />
     </div>
   );

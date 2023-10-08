@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-function PersonalData({ fnameChange , AdressChange , PhoneChange , EmailChange  }){
+function PersonalData({ fnameChange , AdressChange , PhoneChange , EmailChange , DescriptionChange  }){
 
     const [fname, setFname] = useState('');
     const [adress, setAdress] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
+    const [description, setDescription] = useState('');
 
     const handleFnameChange = (event) => {
       const FnameValue = event.target.value;
@@ -31,6 +32,12 @@ function PersonalData({ fnameChange , AdressChange , PhoneChange , EmailChange  
           EmailChange(EmailValue);
       };
 
+      const handleDescriptionChange = (event) => {
+        const DescriptionValue = event.target.value;
+        setDescription(DescriptionValue);
+        DescriptionChange(DescriptionValue);
+    };
+
     return (
         <div className="UserInfo">
             <p className="UserInfoText">Personal Details</p>
@@ -38,7 +45,7 @@ function PersonalData({ fnameChange , AdressChange , PhoneChange , EmailChange  
                 <div>
                     <p className="UserInfoRowtext">Fullname</p>
                     <input  
-                        className="A"
+                        className="FullnameInput"
                         type="text" 
                         placeholder="enter full name"
                         value={fname}
@@ -48,8 +55,8 @@ function PersonalData({ fnameChange , AdressChange , PhoneChange , EmailChange  
                 </div>
                 <div>
                     <p className="UserInfoRowtext">Email</p>
-                    <input 
-                        className="A"
+                    <input
+                        className="EmailInput"
                         type="email"
                         value={email}
                         onChange={handleEmailChange}
@@ -62,6 +69,7 @@ function PersonalData({ fnameChange , AdressChange , PhoneChange , EmailChange  
                 <div>
                     <p className="UserInfoRowtext">Phone Number</p>
                     <input 
+                        className="PhoneInput"
                         type="number"
                         value={phone}
                         onChange={handlePhoneChange}
@@ -72,10 +80,22 @@ function PersonalData({ fnameChange , AdressChange , PhoneChange , EmailChange  
                 <div>
                     <p className="UserInfoRowtext">Adress</p>
                     <input 
+                        className="AdressInput"
                         type="text"
                         value={adress}
                         onChange={handleAdressChange}
                         placeholder="enter Adress"
+                        required
+                    />
+                </div>
+                <div className="Description">
+                    <p className="UserInfoRowtext">Description</p>
+                    <input 
+                        className="DescriptionInput"
+                        type="text"
+                        value={description}
+                        onChange={handleDescriptionChange}
+                        placeholder="enter description"
                         required
                     />
                 </div>

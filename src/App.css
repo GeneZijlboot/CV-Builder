@@ -20,8 +20,8 @@
     font-size: 30px;
 }
 
-input{
-    max-width: 240px;
+.FullnameInput, .EmailInput, .PhoneInput, .AdressInput, .DescriptionInput{
+    width: 240px;
     border-radius: 20px;
     border: 1px solid snow;
     padding-left: 10px;
