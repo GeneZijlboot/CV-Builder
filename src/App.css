@@ -86,6 +86,8 @@
     height: 50px;
     font-size: 15px;
     cursor: pointer;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 .Save:hover, .WorkExpBtn:hover, .SkillsBtn:hover, .EducationBtn:hover{
@@ -97,6 +99,8 @@
     height: 50px;
     font-size: 15px;
     cursor: pointer;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 
@@ -145,7 +149,6 @@ input{
 /* Questions --> WorkExp Component */
 
 .WorkExp, .Skills, .Education{
-    display: flex;
     border: 5px solid black;
     background-color: rgb(23, 141, 78);
     margin: 20px;/**/
@@ -161,4 +164,54 @@ input{
 
 .inputfields{
     display: grid;
+}
+
+.WorkExpA, .SkillsA, .EducationA{
+    display: flex;
+    justify-content: space-between;
+}
+
+.WorkExpTxt{
+    font-size: 30px;
+    padding: 5px;
+    color: snow;
+}
+
+.WorkExpInput{
+    width: 240px;
+    border-radius: 20px;
+    border: 1px solid snow;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.WorkExpRowOne{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+.DeleteBtn{
+    background-color: snow;
+    border: 5px solid snow;
+    color:black;
+    border-radius: 25px;
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.DeleteBtn:hover{
+    background-color: black;
+    border: 5px solid black;
+    color:snow;
+    border-radius: 25px;
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
 }

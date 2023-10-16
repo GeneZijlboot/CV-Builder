@@ -5,11 +5,11 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [fname, setFname] = useState('');
-  const [adress, setAdress] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [description, setDescription] = useState('');
+  const [fname, setFname] = useState('John Do');
+  const [adress, setAdress] = useState('Amsterdam');
+  const [phone, setPhone] = useState('0612345678');
+  const [email, setEmail] = useState('exmaple@gmail.com');
+  const [description, setDescription] = useState('A wonderfull exmaple of a description');
 
   const handleSubmitFname = (value) => {
     setFname(value);
@@ -39,6 +39,8 @@ function App() {
         PhoneChange={handleSubmitPhone}
         EmailChange={handleSubmitEmail}
         DescriptionChange={handleSubmitDescription}
+
+        onExpDelete={() => DeleteWorExpForm(index)}
       />
 
       <Results

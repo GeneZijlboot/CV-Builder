@@ -1,4 +1,4 @@
-function Results({ fname , adress , phone , email , description }){
+function Results({ fname , adress , phone , email , description , CompanyValue }){
     return (
         <div className="Results">
             <div className='SectionOne'>
@@ -32,6 +32,7 @@ function Results({ fname , adress , phone , email , description }){
 
             <div>
                 <p className='Text'>Experience</p>
+                <p>{ CompanyValue }</p>
             </div>
 
             <div className='Devider'></div>

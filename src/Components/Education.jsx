@@ -1,8 +1,12 @@
+import '../App.css'
+
 function Education(){
     return( 
         <div className='Education'>
-            <div className='Educationtxt'>Education</div>
-            <button className='EducationBtn'>+ Add</button>
+            <div className='EducationA'>
+                <div className="UserInfoText">Education</div>
+                <button className='EducationBtn'>+ Add</button>
+            </div>
         </div>
     )
 }
