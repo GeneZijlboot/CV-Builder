@@ -167,6 +167,11 @@ input{
 }
 
 .WorkExpA, .SkillsA, .EducationA{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.ReadableSection{
     display: flex;
     justify-content: space-between;
 }
@@ -202,6 +207,7 @@ input{
     font-size: 15px;
     cursor: pointer;
     margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .DeleteBtn:hover{
@@ -214,4 +220,36 @@ input{
     font-size: 15px;
     cursor: pointer;
     margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.SkillLayout{
+    display: flex;
+    gap: 20px;
+}
+
+.DeleteBtnSkill{
+    background-color: snow;
+    border: 5px solid snow;
+    color:black;
+    border-radius: 25px;
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+.DeleteBtnSkill:hover{
+    background-color: black;
+    border: 5px solid black;
+    color:snow;
+    border-radius: 25px;
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 2px;
+    margin-bottom: 20px;
 }
