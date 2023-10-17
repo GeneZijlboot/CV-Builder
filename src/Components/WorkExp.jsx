@@ -2,7 +2,7 @@ import { useState } from "react"
 import '../App.css'
 
 
-function WorkExp(){
+function WorkExp({ Company , Position , ExpFrom , ExpTo }){
     const [InputCompany, setInputCompany] = useState([]);
     const [OutputCompany, setOutputCompany] = useState([]);
   
@@ -30,23 +30,27 @@ function WorkExp(){
         const updatedOutputCompanyValues = [...OutputCompany];
         updatedOutputCompanyValues[index] = value;
         setOutputCompany(updatedOutputCompanyValues);
+        Company(updatedOutputCompanyValues);
     };
 
     const handlePositionChange = (value, index) => {
         const updatedOutputPositionValues = [...OutputPosition];
         updatedOutputPositionValues[index] = value;
         setOutputPosition(updatedOutputPositionValues);
+        Position(updatedOutputPositionValues);
     };
     
     const handleFromChange = (value, index) => {
         const updatedOutputFromValues = [...OutputFrom];
         updatedOutputFromValues[index] = value;
         setOutputFrom(updatedOutputFromValues);
+        ExpFrom(updatedOutputFromValues);
     };
     const handleToChange = (value, index) => {
         const updatedOutputToValues = [...OutputTo];
         updatedOutputToValues[index] = value;
         setOutputTo(updatedOutputToValues);
+        ExpTo(updatedOutputToValues);
     };
 
     const deleteInputInputField = (index) => {

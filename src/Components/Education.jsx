@@ -2,7 +2,7 @@ import { useState } from "react"
 import '../App.css'
 
 
-function Education(){
+function Education({ School , Degree , EducFrom , EducTo}){
     const [InputSchool, setInputSchool] = useState([]);
     const [OutputSchool, setOutputSchool] = useState([]);
   
@@ -30,23 +30,27 @@ function Education(){
         const updatedOutputSchoolValues = [...OutputSchool];
         updatedOutputSchoolValues[index] = value;
         setOutputSchool(updatedOutputSchoolValues);
+        School(updatedOutputSchoolValues);
     };
 
     const handleDegreeChange = (value, index) => {
         const updatedOutputDegreeValues = [...OutputDegree];
         updatedOutputDegreeValues[index] = value;
         setOutputDegree(updatedOutputDegreeValues);
+        Degree(updatedOutputDegreeValues);
     };
     
     const handleFromChange = (value, index) => {
         const updatedOutputFromValues = [...OutputFrom];
         updatedOutputFromValues[index] = value;
         setOutputFrom(updatedOutputFromValues);
+        EducFrom(updatedOutputFromValues);
     };
     const handleToChange = (value, index) => {
         const updatedOutputToValues = [...OutputTo];
         updatedOutputToValues[index] = value;
         setOutputTo(updatedOutputToValues);
+        EducTo(updatedOutputToValues);
     };
 
     const deleteInputInputField = (index) => {

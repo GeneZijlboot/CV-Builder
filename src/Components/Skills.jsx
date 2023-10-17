@@ -2,7 +2,7 @@ import { useState } from "react"
 import '../App.css'
 
 
-function Skills(){
+function Skills({ Skill }){
     const [InputSkill, setInputSkill] = useState([]);
     const [OutputSkill, setOutputSkill] = useState([]);
 
@@ -15,6 +15,7 @@ function Skills(){
         const updatedOutputSkillValues = [...OutputSkill];
         updatedOutputSkillValues[index] = value;
         setOutputSkill(updatedOutputSkillValues);
+        Skill(updatedOutputSkillValues);
     };
 
     const deleteInputInputField = (index) => {
