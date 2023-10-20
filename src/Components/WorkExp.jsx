@@ -59,7 +59,7 @@ function WorkExp({ WorkExpChange }){
                     <label className="WorkExpTxt">From:</label>
                     <input
                         className="WorkExpInput"
-                        type="text"
+                        type="number"
                         value={WorkExpInputs.WorkExpFrom}
                         placeholder="From"
                         onChange={(event) => handleInputChange(index, 'WorkExpFrom', event)}
@@ -69,7 +69,7 @@ function WorkExp({ WorkExpChange }){
                     <label className="WorkExpTxt">To:</label>
                     <input
                         className="WorkExpInput"
-                        type="text"
+                        type="number"
                         value={WorkExpInputs.WorkExpTo}
                         placeholder="To"
                         onChange={(event) => handleInputChange(index, 'WorkExpTo', event)}

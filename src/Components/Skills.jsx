@@ -39,7 +39,7 @@ function Skills({ SkillsChange }){
                         className="WorkExpInput"
                         type="text"
                         value={SkillInputs.Skills}
-                        placeholder="enter Skill"
+                        placeholder="Language or Technology"
                         onChange={(event) => handleInputChange(index, 'Skills', event)}
                     />
                 </div>

@@ -34,14 +34,13 @@ function Results({ fname , adress , phone , email , description , WorkExpInputs 
                 <p className='Text'>Experience</p>
                 {WorkExpInputs.map((WorkExpInputs, index) => (
                     <div key={index}>
-                        <p>Company:</p>
-                        <p>{WorkExpInputs.Company}</p>
-                        <p>Position:</p>
-                        <p>{WorkExpInputs.Position}</p>
-                        <p>from:</p>
-                        <p>{WorkExpInputs.WorkExpFrom}</p>
-                        <p>to:</p>
-                        <p>{WorkExpInputs.WorkExpTo}</p>
+                        <p className="Company">{WorkExpInputs.Company}</p>
+                        <p className="Position">{WorkExpInputs.Position}</p>
+                        <div className="Date">
+                            <p className="Dates">{WorkExpInputs.WorkExpFrom}</p>
+                            <p className="dash">-</p>
+                            <p className="Dates">{WorkExpInputs.WorkExpTo}</p>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -50,12 +49,11 @@ function Results({ fname , adress , phone , email , description , WorkExpInputs 
 
             <div>
                 <p className='Text'>Skills</p>
+                <ul>
                 {SkillsInputs.map((SkillsInputs, index) => (
-                    <div key={index}>
-                        <p>Skill:</p>
-                        <p>{SkillsInputs.Skills}</p>
-                    </div>
+                    <li key={index}>{SkillsInputs.Skills}</li>
                 ))}
+                </ul>
             </div>
 
             <div className='Devider'></div>
@@ -64,14 +62,13 @@ function Results({ fname , adress , phone , email , description , WorkExpInputs 
                 <p className='Text'>Education</p>
                 {EducInputs.map((EducInputs, index) => (
                     <div key={index}>
-                        <p>School/university:</p>
-                        <p>{EducInputs.School}</p>
-                        <p>Degree:</p>
-                        <p>{EducInputs.Degree}</p>
-                        <p>from:</p>
-                        <p>{EducInputs.EducFrom}</p>
-                        <p>to:</p>
-                        <p>{EducInputs.EducTo}</p>
+                        <p className="Company">{EducInputs.School}</p>
+                        <p className="Position">{EducInputs.Degree}</p>
+                        <div className="Date">
+                            <p className="Dates">{EducInputs.EducFrom}</p>
+                            <p className="dash">-</p>
+                            <p className="Dates">{EducInputs.EducTo}</p>
+                        </div>
                     </div>
                 ))}
             </div>
