@@ -1,4 +1,4 @@
-function Results({ fname , adress , phone , email , description , Company , Position , ExpFrom , ExpTo , Skill , School, Degree, EducFrom , EducTo }){
+function Results({ fname , adress , phone , email , description , WorkExpInputs }){
     return (
         <div className="Results">
             <div className='SectionOne'>
@@ -32,31 +32,32 @@ function Results({ fname , adress , phone , email , description , Company , Posi
 
             <div>
                 <p className='Text'>Experience</p>
-                <h1>Company:</h1>
-                <p>{ Company }</p>
-                <h1>Position:</h1>
-                <p>{ Position }</p>
-                <h1>From:</h1>
-                <p>{ ExpFrom }</p>
-                <h1>To:</h1>
-                <p>{ ExpTo }</p>
+                {WorkExpInputs.map((WorkExpInputs, index) => (
+                    <div key={index}>
+                        <p>Company:</p>
+                        <p>{WorkExpInputs.Company}</p>
+                        <p>Position:</p>
+                        <p>{WorkExpInputs.Position}</p>
+                        <p>from:</p>
+                        <p>{WorkExpInputs.WorkExpFrom}</p>
+                        <p>to:</p>
+                        <p>{WorkExpInputs.WorkExpTo}</p>
+                    </div>
+                ))}
             </div>
 
             <div className='Devider'></div>
 
             <div>
                 <p className='Text'>Skills</p>
-                <p>{Skill}</p>
+
             </div>
 
             <div className='Devider'></div>
             
             <div className='EducRsult'>
                 <p className='Text'>Education</p>
-                <p>{School}</p>
-                <p>{Degree}</p>
-                <p>{EducFrom}</p>
-                <p>{EducTo}</p>
+
             </div>
         </div>
     )

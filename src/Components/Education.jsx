@@ -1,7 +1,6 @@
 import { useState } from "react"
 import '../App.css'
 
-
 function Education({ School , Degree , EducFrom , EducTo}){
     const [InputSchool, setInputSchool] = useState([]);
     const [OutputSchool, setOutputSchool] = useState([]);

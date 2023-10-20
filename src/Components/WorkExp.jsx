@@ -1,176 +1,85 @@
-import { useState } from "react"
+import { useState , useEffect } from "react"
 import '../App.css'
 
 
-function WorkExp({ Company , Position , ExpFrom , ExpTo }){
-    const [InputCompany, setInputCompany] = useState([]);
-    const [OutputCompany, setOutputCompany] = useState([]);
-  
-    const [InputPosition, setInputPosition] = useState([]);
-    const [OutputPosition, setOutputPosition] = useState([]);
+function WorkExp({ onInputValuesChange }){
+    const [WorkExpInputs, setWorkExpInputs] = useState([]);
 
-    const [InputFrom, setInputFrom] = useState([]);
-    const [OutputFrom, setOutputFrom] = useState([]);
-
-    const [InputTo, setInputTo] = useState([]);
-    const [OutputTo, setOutputTo] = useState([]);
-  
-    const AddExpFields = () => {
-      setInputCompany([...InputCompany, { id: Date.now() }]);
-      setOutputCompany([...OutputCompany, '']);
-      setInputPosition([...InputPosition, { id: Date.now() }]);
-      setOutputPosition([...OutputPosition, '']);
-      setInputFrom([...InputFrom, { id: Date.now() }]);
-      setOutputFrom([...OutputFrom, '']);
-      setInputTo([...InputTo, { id: Date.now() }]);
-      setOutputTo([...OutputTo, '']);
+    const AddWorkExpInputs = () => {
+        const newInputFields = [...WorkExpInputs];
+        newInputFields.push({ Company: '', Position: '', WorkExpFrom: '', WorkExpTo: ''});
+        setWorkExpInputs(newInputFields);
     }
 
-    const handleCompanyChange = (value, index) => {
-        const updatedOutputCompanyValues = [...OutputCompany];
-        updatedOutputCompanyValues[index] = value;
-        setOutputCompany(updatedOutputCompanyValues);
-        Company(updatedOutputCompanyValues);
-    };
+    const handleInputChange = (index, field, event) => {
+        const newInputFields = [...WorkExpInputs];
+        newInputFields[index][field] = event.target.value;
+        setWorkExpInputs(newInputFields);
+    }
 
-    const handlePositionChange = (value, index) => {
-        const updatedOutputPositionValues = [...OutputPosition];
-        updatedOutputPositionValues[index] = value;
-        setOutputPosition(updatedOutputPositionValues);
-        Position(updatedOutputPositionValues);
-    };
-    
-    const handleFromChange = (value, index) => {
-        const updatedOutputFromValues = [...OutputFrom];
-        updatedOutputFromValues[index] = value;
-        setOutputFrom(updatedOutputFromValues);
-        ExpFrom(updatedOutputFromValues);
-    };
-    const handleToChange = (value, index) => {
-        const updatedOutputToValues = [...OutputTo];
-        updatedOutputToValues[index] = value;
-        setOutputTo(updatedOutputToValues);
-        ExpTo(updatedOutputToValues);
-    };
+    const removeInputFields = (index) => {
+        const newInputFields = [...WorkExpInputs];
+        newInputFields.splice(index, 1);
+        setWorkExpInputs(newInputFields);
+    }
 
-    const deleteInputInputField = (index) => {
-        const updatedInputComapnyFields = InputCompany.filter((_, i) => i !== index);
-        const updatedOutputCompanyValues = OutputCompany.filter((_, i) => i !== index);
-        setInputCompany(updatedInputComapnyFields);
-        setOutputCompany(updatedOutputCompanyValues);
-    
-        const updatedInputPositionFields = InputPosition.filter((_, i) => i !== index);
-        const updatedOutputPositionValues = OutputPosition.filter((_, i) => i !== index);
-        setInputPosition(updatedInputPositionFields);
-        setOutputPosition(updatedOutputPositionValues);
-
-        const updatedInputFromFields = InputFrom.filter((_, i) => i !== index);
-        const updatedOutputFromValues = OutputFrom.filter((_, i) => i !== index);
-        setInputFrom(updatedInputFromFields);
-        setOutputFrom(updatedOutputFromValues);
-
-        const updatedInputToFields = InputTo.filter((_, i) => i !== index);
-        const updatedOutputToValues = OutputTo.filter((_, i) => i !== index);
-        setInputTo(updatedInputToFields);
-        setOutputTo(updatedOutputToValues);
-    };
+    useEffect(() => {
+        onInputValuesChange(WorkExpInputs);
+    }, [WorkExpInputs, onInputValuesChange]);
 
     return( 
-        <div className='WorkExp'>
+        <div className="WorkExp">
             <div className="ReadableSection">
                 <div className="UserInfoText">Experience</div>
-                <button onClick={AddExpFields} className='WorkExpBtn'>+ Add</button>
+                <button onClick={AddWorkExpInputs} className='WorkExpBtn'>+ Add</button>
             </div>
-                {InputCompany.map((field, index) => (
-                    <div key={field.id}>
-                        <WorkExpInputFields 
-                            onCompanyChange={(value) => handleCompanyChange(value, index)}
-                            onPositionChange={(value) => handlePositionChange(value, index)}
-                            onFromChange={(value) => handleFromChange(value, index)}
-                            onToChange={(value) => handleToChange(value, index)}
-                            onExpDelete={() => deleteInputInputField(index)}
-                        />
-                    </div>
-                ))} 
-        </div>
-    );
-}
-
-export default WorkExp
-
-function WorkExpInputFields({ onCompanyChange , onPositionChange , onFromChange , onToChange ,onExpDelete }) {
-    const [Company, setCompany] = useState('');
-    const [Position, setPosition] = useState('');
-    const [From, setFrom] = useState('');
-    const [To, setTo] = useState('');
-  
-    const HandleCompanyChange = (event) => {
-      const CompanyValue = event.target.value;
-      setCompany(CompanyValue);
-      onCompanyChange(CompanyValue);
-    };
-  
-    const HandlePositionChange = (event) => {
-      const PositionValue = event.target.value;
-      setPosition(PositionValue);
-      onPositionChange(PositionValue);
-    };
-  
-    const HandleFromChange = (event) => {
-        const FromValue = event.target.value;
-        setFrom(FromValue);
-        onFromChange(FromValue);
-    };
-
-    const HandleToChange = (event) => {
-        const ToValue = event.target.value;
-        setTo(ToValue);
-        onToChange(ToValue);
-    };
-
-    return (
-        <div>
-            <div className="WorkExpRowOne">
+            {WorkExpInputs.map((WorkExpInputs, index) => (
+            <div className="WorkExpRowOne" key={index}>
                 <div>
                     <label className="WorkExpTxt">Company:</label>
-                    <input 
+                    <input
                         className="WorkExpInput"
+                        type="text"
+                        value={WorkExpInputs.Company}
                         placeholder="enter Company name"
-                        value={Company}
-                        onChange={HandleCompanyChange}
+                        onChange={(event) => handleInputChange(index, 'Company', event)}
                     />
                 </div>
                 <div>
                     <label className="WorkExpTxt">Position:</label>
-                    <input 
+                    <input
                         className="WorkExpInput"
-                        placeholder="enter Position"
-                        value={Position}
-                        onChange={HandlePositionChange}
+                        type="text"
+                        value={WorkExpInputs.Position}
+                        placeholder="enter Position"    
+                        onChange={(event) => handleInputChange(index, 'Position', event)}
                     />
                 </div>
                 <div>
                     <label className="WorkExpTxt">From:</label>
                     <input
-                        type="number"
                         className="WorkExpInput"
+                        type="text"
+                        value={WorkExpInputs.WorkExpFrom}
                         placeholder="From"
-                        value={From}
-                        onChange={HandleFromChange}
+                        onChange={(event) => handleInputChange(index, 'WorkExpFrom', event)}
                     />
                 </div>
                 <div>
                     <label className="WorkExpTxt">To:</label>
                     <input
-                        type="number"
                         className="WorkExpInput"
+                        type="text"
+                        value={WorkExpInputs.WorkExpTo}
                         placeholder="To"
-                        value={To}
-                        onChange={HandleToChange}
+                        onChange={(event) => handleInputChange(index, 'WorkExpTo', event)}
                     />
                 </div>
-                <button onClick={onExpDelete} className='DeleteBtn'>Delete</button>
+                <button className='DeleteBtn' onClick={() => removeInputFields(index)}>Delete</button>
             </div>
+            ))}
         </div>
     );
 }
+
+export default WorkExp

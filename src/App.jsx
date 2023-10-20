@@ -31,53 +31,11 @@ function App() {
     setDescription(value);
   };
 
-  const [Company, setCompany] = useState('');
-  const [Position, setPosition] = useState('');
-  const [ExpFrom, setExpFrom] = useState('');
-  const [ExpTo, setExpTo] = useState('');
+  const [WorkExpInputs, setWorkExpInputs] = useState([]);
 
-  const handleSubmitCompany = (value) => {
-    setCompany(value);
-  };
-
-  const handleSubmitPosition = (value) => {
-    setPosition(value);
-  };
-  
-  const handleSubmitExpFrom = (value) => {
-    setExpFrom(value);
-  };
-
-  const handleSubmitExpTo = (value) => {
-    setExpTo(value);
-  };
-
-  const [Skill, setSkill] = useState('');
-
-  const handleSubmitSkill = (value) => {
-    setSkill(value);
-  };
-
-  const [School, setSchool] = useState('');
-  const [Degree, setDegree] = useState('');
-  const [EducFrom, setEducFrom] = useState('');
-  const [EducTo, setEducTo] = useState('');
-
-  const handleSubmitSchool = (value) => {
-    setSchool(value);
-  };
-
-  const handleSubmitDegree = (value) => {
-    setDegree(value);
-  };
-  
-  const handleSubmitEducFrom = (value) => {
-    setEducFrom(value);
-  };
-
-  const handleSubmitEducTo = (value) => {
-    setEducTo(value);
-  };
+  const WorkExpChanges = (WorkExpInputs) => {
+    setWorkExpInputs(WorkExpInputs);
+  }
 
   return (
     <div className="App">
@@ -88,19 +46,7 @@ function App() {
         EmailChange={handleSubmitEmail}
         DescriptionChange={handleSubmitDescription}
 
-        Company={handleSubmitCompany}
-        Position={handleSubmitPosition}
-        ExpFrom={handleSubmitExpFrom}
-        ExpTo={handleSubmitExpTo}
-
-        Skill={handleSubmitSkill}
-
-        School={handleSubmitSchool}
-        Degree={handleSubmitDegree}
-        EducFrom={handleSubmitEducFrom}
-        EducTo={handleSubmitEducTo}
-
-        onExpDelete={() => DeleteWorExpForm(index)}
+        onInputValuesChange={WorkExpChanges}
       />
 
       <Results
@@ -110,17 +56,7 @@ function App() {
         email={email}
         description={description}
 
-        Company={Company}
-        Position={Position}
-        ExpFrom={ExpFrom}
-        ExpTo={ExpTo}
-
-        Skill={Skill}
-
-        School={School}
-        Degree={Degree}
-        EducFrom={EducFrom}
-        EducTo={EducTo}
+        WorkExpInputs={WorkExpInputs}
       />
     </div>
   );
