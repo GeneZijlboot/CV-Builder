@@ -1,175 +1,84 @@
-import { useState } from "react"
+import { useState , useEffect } from "react"
 import '../App.css'
 
-function Education({ School , Degree , EducFrom , EducTo}){
-    const [InputSchool, setInputSchool] = useState([]);
-    const [OutputSchool, setOutputSchool] = useState([]);
-  
-    const [InputDegree, setInputDegree] = useState([]);
-    const [OutputDegree, setOutputDegree] = useState([]);
+function Education({ EducChange }){
+    const [EducInputs, setEducInputs] = useState([]);
 
-    const [InputFrom, setInputFrom] = useState([]);
-    const [OutputFrom, setOutputFrom] = useState([]);
-
-    const [InputTo, setInputTo] = useState([]);
-    const [OutputTo, setOutputTo] = useState([]);
-  
-    const AddExpFields = () => {
-      setInputSchool([...InputSchool, { id: Date.now() }]);
-      setOutputSchool([...OutputSchool, '']);
-      setInputDegree([...InputDegree, { id: Date.now() }]);
-      setOutputDegree([...OutputDegree, '']);
-      setInputFrom([...InputFrom, { id: Date.now() }]);
-      setOutputFrom([...OutputFrom, '']);
-      setInputTo([...InputTo, { id: Date.now() }]);
-      setOutputTo([...OutputTo, '']);
+    const AddEducInputs = () => {
+        const newInputFields = [...EducInputs];
+        newInputFields.push({ School: '', Degree: '', EducFrom: '', EducTo: ''});
+        setEducInputs(newInputFields);
     }
 
-    const handleSchoolChange = (value, index) => {
-        const updatedOutputSchoolValues = [...OutputSchool];
-        updatedOutputSchoolValues[index] = value;
-        setOutputSchool(updatedOutputSchoolValues);
-        School(updatedOutputSchoolValues);
-    };
+    const handleInputChange = (index, field, event) => {
+        const newInputFields = [...EducInputs];
+        newInputFields[index][field] = event.target.value;
+        setEducInputs(newInputFields);
+    }
 
-    const handleDegreeChange = (value, index) => {
-        const updatedOutputDegreeValues = [...OutputDegree];
-        updatedOutputDegreeValues[index] = value;
-        setOutputDegree(updatedOutputDegreeValues);
-        Degree(updatedOutputDegreeValues);
-    };
-    
-    const handleFromChange = (value, index) => {
-        const updatedOutputFromValues = [...OutputFrom];
-        updatedOutputFromValues[index] = value;
-        setOutputFrom(updatedOutputFromValues);
-        EducFrom(updatedOutputFromValues);
-    };
-    const handleToChange = (value, index) => {
-        const updatedOutputToValues = [...OutputTo];
-        updatedOutputToValues[index] = value;
-        setOutputTo(updatedOutputToValues);
-        EducTo(updatedOutputToValues);
-    };
+    const removeInputFields = (index) => {
+        const newInputFields = [...EducInputs];
+        newInputFields.splice(index, 1);
+        setEducInputs(newInputFields);
+    }
 
-    const deleteInputInputField = (index) => {
-        const updatedInputSchoolFields = InputSchool.filter((_, i) => i !== index);
-        const updatedOutputSchoolValues = OutputSchool.filter((_, i) => i !== index);
-        setInputSchool(updatedInputSchoolFields);
-        setOutputSchool(updatedOutputSchoolValues);
-    
-        const updatedInputDegreeFields = InputDegree.filter((_, i) => i !== index);
-        const updatedOutputDegreeValues = OutputDegree.filter((_, i) => i !== index);
-        setInputDegree(updatedInputDegreeFields);
-        setOutputDegree(updatedOutputDegreeValues);
+    useEffect(() => {
+        EducChange(EducInputs);
+    }, [EducInputs, EducChange]);
 
-        const updatedInputFromFields = InputFrom.filter((_, i) => i !== index);
-        const updatedOutputFromValues = OutputFrom.filter((_, i) => i !== index);
-        setInputFrom(updatedInputFromFields);
-        setOutputFrom(updatedOutputFromValues);
-
-        const updatedInputToFields = InputTo.filter((_, i) => i !== index);
-        const updatedOutputToValues = OutputTo.filter((_, i) => i !== index);
-        setInputTo(updatedInputToFields);
-        setOutputTo(updatedOutputToValues);
-    };
-
-    return(
-        <div className='WorkExp'>
+    return( 
+        <div className="WorkExp">
             <div className="ReadableSection">
                 <div className="UserInfoText">Education</div>
-                <button onClick={AddExpFields} className='WorkExpBtn'>+ Add</button>
+                <button onClick={AddEducInputs} className='WorkExpBtn'>+ Add</button>
             </div>
-                {InputSchool.map((field, index) => (
-                    <div key={field.id}>
-                        <EducationInputFields 
-                            onSchoolChange={(value) => handleSchoolChange(value, index)}
-                            onDegreeChange={(value) => handleDegreeChange(value, index)}
-                            onFromChange={(value) => handleFromChange(value, index)}
-                            onToChange={(value) => handleToChange(value, index)}
-                            onExpDelete={() => deleteInputInputField(index)}
-                        />
-                    </div>
-                ))} 
-        </div>
-    );
-}
-
-export default Education
-
-function EducationInputFields({ onSchoolChange , onDegreeChange , onFromChange , onToChange ,onExpDelete }) {
-    const [School, setSchool] = useState('');
-    const [Degree, setDegree] = useState('');
-    const [From, setFrom] = useState('');
-    const [To, setTo] = useState('');
-  
-    const HandleSchoolChange = (event) => {
-      const SchoolValue = event.target.value;
-      setSchool(SchoolValue);
-      onSchoolChange(SchoolValue);
-    };
-  
-    const HandleDegreeChange = (event) => {
-      const DegreeValue = event.target.value;
-      setDegree(DegreeValue);
-      onDegreeChange(DegreeValue);
-    };
-  
-    const HandleFromChange = (event) => {
-        const FromValue = event.target.value;
-        setFrom(FromValue);
-        onFromChange(FromValue);
-    };
-
-    const HandleToChange = (event) => {
-        const ToValue = event.target.value;
-        setTo(ToValue);
-        onToChange(ToValue);
-    };
-
-    return (
-        <div>
-            <div className="WorkExpRowOne">
+            {EducInputs.map((EducInputs, index) => (
+            <div className="WorkExpRowOne" key={index}>
                 <div>
                     <label className="WorkExpTxt">School/University:</label>
-                    <input 
+                    <input
                         className="WorkExpInput"
+                        type="text"
+                        value={EducInputs.School}
                         placeholder="enter School/University name"
-                        value={School}
-                        onChange={HandleSchoolChange}
+                        onChange={(event) => handleInputChange(index, 'School', event)}
                     />
                 </div>
                 <div>
-                    <label className="WorkExpTxt">Degree:</label>
-                    <input 
+                    <label className="WorkExpTxt">Position:</label>
+                    <input
                         className="WorkExpInput"
-                        placeholder="enter Degree"
-                        value={Degree}
-                        onChange={HandleDegreeChange}
+                        type="text"
+                        value={EducInputs.Degree}
+                        placeholder="enter Degree"    
+                        onChange={(event) => handleInputChange(index, 'Degree', event)}
                     />
                 </div>
                 <div>
                     <label className="WorkExpTxt">From:</label>
                     <input
-                        type="number"
                         className="WorkExpInput"
+                        type="text"
+                        value={EducInputs.EducFrom}
                         placeholder="From"
-                        value={From}
-                        onChange={HandleFromChange}
+                        onChange={(event) => handleInputChange(index, 'EducFrom', event)}
                     />
                 </div>
                 <div>
                     <label className="WorkExpTxt">To:</label>
                     <input
-                        type="number"
                         className="WorkExpInput"
+                        type="text"
+                        value={EducInputs.EducTo}
                         placeholder="To"
-                        value={To}
-                        onChange={HandleToChange}
+                        onChange={(event) => handleInputChange(index, 'EducTo', event)}
                     />
                 </div>
-                <button onClick={onExpDelete} className='DeleteBtn'>Delete</button>
+                <button className='DeleteBtn' onClick={() => removeInputFields(index)}>Delete</button>
             </div>
+            ))}
         </div>
     );
 }
+
+export default Education;

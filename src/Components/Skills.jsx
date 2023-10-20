@@ -1,73 +1,53 @@
-import { useState } from "react"
+import { useState , useEffect } from "react"
 import '../App.css'
 
+function Skills({ SkillsChange }){
+    const [SkillInputs, setSkillInputs] = useState([]);
 
-function Skills({ Skill }){
-    const [InputSkill, setInputSkill] = useState([]);
-    const [OutputSkill, setOutputSkill] = useState([]);
-
-    const AddExpFields = () => {
-      setInputSkill([...InputSkill, { id: Date.now() }]);
-      setOutputSkill([...OutputSkill, '']);
+    const AddSkillsInputs = () => {
+        const newInputFields = [...SkillInputs];
+        newInputFields.push({ Skills: ''});
+        setSkillInputs(newInputFields);
     }
 
-    const handleSkillChange = (value, index) => {
-        const updatedOutputSkillValues = [...OutputSkill];
-        updatedOutputSkillValues[index] = value;
-        setOutputSkill(updatedOutputSkillValues);
-        Skill(updatedOutputSkillValues);
-    };
+    const handleInputChange = (index, field, event) => {
+        const newInputFields = [...SkillInputs];
+        newInputFields[index][field] = event.target.value;
+        setSkillInputs(newInputFields);
+    }
 
-    const deleteInputInputField = (index) => {
-        const updatedInputSkillFields = InputSkill.filter((_, i) => i !== index);
-        const updatedOutputSkillValues = OutputSkill.filter((_, i) => i !== index);
-        setInputSkill(updatedInputSkillFields);
-        setOutputSkill(updatedOutputSkillValues);
-    
-    };
+    const removeInputFields = (index) => {
+        const newInputFields = [...SkillInputs];
+        newInputFields.splice(index, 1);
+        setSkillInputs(newInputFields);
+    }
 
-    return(
-        <div className='WorkExp'>
+    useEffect(() => {
+        SkillsChange(SkillInputs);
+    }, [SkillInputs, SkillsChange]);
+
+    return( 
+        <div className="WorkExp">
             <div className="ReadableSection">
                 <div className="UserInfoText">Skills</div>
-                <button onClick={AddExpFields} className='WorkExpBtn'>+ Add</button>
+                <button onClick={AddSkillsInputs} className='WorkExpBtn'>+ Add</button>
             </div>
-                {InputSkill.map((field, index) => (
-                    <div key={field.id}>
-                        <SkillsInputFields 
-                            onSkillChange={(value) => handleSkillChange(value, index)}
-                            onExpDelete={() => deleteInputInputField(index)}
-                        />
-                    </div>
-                ))} 
-        </div>
-    );
-}
-
-export default Skills
-
-function SkillsInputFields({ onSkillChange , onExpDelete }) {
-    const [Skill, setSkill] = useState('');
-
-    const HandleSkillChange = (event) => {
-        const SkillValue = event.target.value;
-        setSkill(SkillValue);
-        onSkillChange(SkillValue);
-    };
-
-    return (
-        <div>
-            <div className="WorkExpRowOne">
-                <div className="SkillLayout">
-                    <input 
+            {SkillInputs.map((SkillInputs, index) => (
+            <div className="WorkExpRowOne" key={index}>
+                <div>
+                    <input
                         className="WorkExpInput"
-                        placeholder="Language or Technology"
-                        value={Skill}
-                        onChange={HandleSkillChange}
+                        type="text"
+                        value={SkillInputs.Skills}
+                        placeholder="enter Skill"
+                        onChange={(event) => handleInputChange(index, 'Skills', event)}
                     />
-                    <button onClick={onExpDelete} className='DeleteBtnSkill'>Delete</button>
                 </div>
+                <button className='DeleteBtnSkill' onClick={() => removeInputFields(index)}>Delete</button>
             </div>
+            ))}
         </div>
     );
 }
+
+export default Skills;

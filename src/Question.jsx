@@ -4,7 +4,7 @@ import Skills from "./Components/Skills";
 import WorkExp from "./Components/WorkExp";
 import Education from "./Components/Education";
 
-function Questions({ fnameChange , AdressChange , PhoneChange , EmailChange , DescriptionChange , onInputValuesChange , Skill , School , Degree , EducFrom , EducTo }){
+function Questions({ fnameChange , AdressChange , PhoneChange , EmailChange , DescriptionChange , WorkExpChange , SkillsChange , EducChange}){
     return (
         <div className="Questions">
             <Copyright />
@@ -16,16 +16,13 @@ function Questions({ fnameChange , AdressChange , PhoneChange , EmailChange , De
                 DescriptionChange={DescriptionChange}
             />
             <WorkExp 
-                onInputValuesChange={onInputValuesChange}
+                WorkExpChange={WorkExpChange}
             />
             <Skills 
-                Skill={Skill}
+                SkillsChange={SkillsChange}
             />
-            <Education 
-                School={School}
-                Degree={Degree}
-                EducFrom={EducFrom}
-                EducTo={EducTo}
+            <Education
+                EducChange={EducChange}
             />
         </div>
     )

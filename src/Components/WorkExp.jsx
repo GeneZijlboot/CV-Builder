@@ -2,7 +2,7 @@ import { useState , useEffect } from "react"
 import '../App.css'
 
 
-function WorkExp({ onInputValuesChange }){
+function WorkExp({ WorkExpChange }){
     const [WorkExpInputs, setWorkExpInputs] = useState([]);
 
     const AddWorkExpInputs = () => {
@@ -24,8 +24,8 @@ function WorkExp({ onInputValuesChange }){
     }
 
     useEffect(() => {
-        onInputValuesChange(WorkExpInputs);
-    }, [WorkExpInputs, onInputValuesChange]);
+        WorkExpChange(WorkExpInputs);
+    }, [WorkExpInputs, WorkExpChange]);
 
     return( 
         <div className="WorkExp">

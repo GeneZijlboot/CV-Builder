@@ -33,8 +33,20 @@ function App() {
 
   const [WorkExpInputs, setWorkExpInputs] = useState([]);
 
-  const WorkExpChanges = (WorkExpInputs) => {
+  const WorkExpChange = (WorkExpInputs) => {
     setWorkExpInputs(WorkExpInputs);
+  }
+
+  const [EducInputs, setEducInputs] = useState([]);
+
+  const EducChange = (EducInputs) => {
+    setEducInputs(EducInputs);
+  }
+
+  const [SkillsInputs, setSkillsInput] = useState([]);
+
+  const SkillsChange = (SkillsInputs) => {
+    setSkillsInput(SkillsInputs);
   }
 
   return (
@@ -46,7 +58,9 @@ function App() {
         EmailChange={handleSubmitEmail}
         DescriptionChange={handleSubmitDescription}
 
-        onInputValuesChange={WorkExpChanges}
+        WorkExpChange={WorkExpChange}
+        EducChange={EducChange}
+        SkillsChange={SkillsChange}
       />
 
       <Results
@@ -55,8 +69,9 @@ function App() {
         phone={phone}
         email={email}
         description={description}
-
         WorkExpInputs={WorkExpInputs}
+        EducInputs={EducInputs}
+        SkillsInputs={SkillsInputs}
       />
     </div>
   );
