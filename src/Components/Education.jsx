@@ -45,7 +45,7 @@ function Education({ EducChange }){
                     />
                 </div>
                 <div>
-                    <label className="WorkExpTxt">Position:</label>
+                    <label className="WorkExpTxt">Degree:</label>
                     <input
                         className="WorkExpInput"
                         type="text"
@@ -58,7 +58,7 @@ function Education({ EducChange }){
                     <label className="WorkExpTxt">From:</label>
                     <input
                         className="WorkExpInput"
-                        type="number"
+                        type="text"
                         value={EducInputs.EducFrom}
                         placeholder="From"
                         onChange={(event) => handleInputChange(index, 'EducFrom', event)}
@@ -68,7 +68,7 @@ function Education({ EducChange }){
                     <label className="WorkExpTxt">To:</label>
                     <input
                         className="WorkExpInput"
-                        type="number"
+                        type="text"
                         value={EducInputs.EducTo}
                         placeholder="To"
                         onChange={(event) => handleInputChange(index, 'EducTo', event)}

@@ -1,6 +1,6 @@
 function Results({ fname , adress , phone , email , description , WorkExpInputs , SkillsInputs , EducInputs }){
     return (
-        <div className="Results">
+        <div id="PDF" className="Results">
             <div className='SectionOne'>
                 <div className="Name">
                 <p>{ fname }</p>
@@ -32,17 +32,21 @@ function Results({ fname , adress , phone , email , description , WorkExpInputs 
 
             <div>
                 <p className='Text'>Experience</p>
-                {WorkExpInputs.map((WorkExpInputs, index) => (
-                    <div key={index}>
-                        <p className="Company">{WorkExpInputs.Company}</p>
-                        <p className="Position">{WorkExpInputs.Position}</p>
-                        <div className="Date">
-                            <p className="Dates">{WorkExpInputs.WorkExpFrom}</p>
-                            <p className="dash">-</p>
-                            <p className="Dates">{WorkExpInputs.WorkExpTo}</p>
-                        </div>
-                    </div>
-                ))}
+                <ul className="WorkExpResults">
+                    {WorkExpInputs.map((WorkExpInputs, index) => (
+                        <li>
+                            <div key={index}>
+                                <p className="Company">{WorkExpInputs.Company}</p>
+                                <p className="Position">{WorkExpInputs.Position}</p>
+                                <div className="Date">
+                                    <p className="Dates">{WorkExpInputs.WorkExpFrom}</p>
+                                    <p className="dash">-</p>
+                                    <p className="Dates">{WorkExpInputs.WorkExpTo}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
 
             <div className='Devider'></div>
@@ -60,17 +64,21 @@ function Results({ fname , adress , phone , email , description , WorkExpInputs 
             
             <div className='EducRsult'>
                 <p className='Text'>Education</p>
-                {EducInputs.map((EducInputs, index) => (
-                    <div key={index}>
-                        <p className="Company">{EducInputs.School}</p>
-                        <p className="Position">{EducInputs.Degree}</p>
-                        <div className="Date">
-                            <p className="Dates">{EducInputs.EducFrom}</p>
-                            <p className="dash">-</p>
-                            <p className="Dates">{EducInputs.EducTo}</p>
-                        </div>
-                    </div>
-                ))}
+                <ul className="WorkExpResults">
+                    {EducInputs.map((EducInputs, index) => (
+                        <li>
+                            <div key={index}>
+                                <p className="Company">{EducInputs.School}</p>
+                                <p className="Position">{EducInputs.Degree}</p>
+                                <div className="Date">
+                                    <p className="Dates">{EducInputs.EducFrom}</p>
+                                    <p className="dash">-</p>
+                                    <p className="Dates">{EducInputs.EducTo}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )
