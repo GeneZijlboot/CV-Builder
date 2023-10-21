@@ -1,7 +1,7 @@
 {
   "name": "test",
   "private": true,
-  "homepage": "https://genezijlboot.github.io/CV-Builder/",
+  "homepage": "https://GeneZijlboot.github.io/CV-Builder",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
