@@ -1,3 +1,3 @@
 # CV-Builder
 
-https://resilient-trifle-be1846.netlify.app/
+https://cv-buildergz.netlify.app/
